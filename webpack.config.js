@@ -14,8 +14,7 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery'
-		}),
-		'transform-object-rest-spread'
+		})
 	],
 	output: {
 		path: __dirname,
