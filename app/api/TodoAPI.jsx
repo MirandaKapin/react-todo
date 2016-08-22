@@ -32,15 +32,6 @@ module.exports = {
       var todoText = todo.text.toLowerCase();
       return searchText.length === 0 || todoText.indexOf(searchText) > -1
     });
-    // if (searchText.length !== 0) {
-    //   filteredTodos = filteredTodos.filter((todo) => {
-    //     if (todo.text.toLowerCase().indexOf(searchText) !== -1) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   });
-    // }
 
     // Sort todos with non-completed first
     filteredTodos.sort((a, b) => {
