@@ -32,4 +32,40 @@ describe ('Reducers', () => {
       });
     });
   });
+
+  describe ('todosReducer', () => {
+    it ('should add new todo', () => {
+      var action = {
+        type: 'ADD_TODO',
+        text: 'Walk the dog'
+      };
+
+      var res = reducers.todosReducer(df([]), df(action));
+
+      expect(res.length).toEqual(1);
+      expect(res[0].text).toEqual(action.text);
+    });
+
+    it ('should toggle todo item', () => {
+      var todoArray = [
+        {
+          id: 1,
+          text: 'Walk dog',
+          completed:false,
+          createdAt: 1476932876,
+          completedAt: undefined
+        }
+      ];
+
+      var action = {
+        type: 'TOGGLE_TODO',
+        id: 1
+      };
+
+      var res = reducers.todosReducer(df(todoArray), df(action));
+
+      expect(res[0].completed).toEqual(true);
+      expect(res[0].completedAt).toBeA('number');
+    });
+  });
 });
