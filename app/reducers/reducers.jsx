@@ -7,7 +7,7 @@ export var searchTextReducer = (state = '', action) => {
       return action.searchText;
     default:
       return state;
-  }
+  };
 };
 
 export var showCompletedReducer = (state = false, action) => {
