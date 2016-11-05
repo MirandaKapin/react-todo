@@ -51,26 +51,32 @@ describe ('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it ('should toggle todo item', () => {
+    it ('should update todo item', () => {
       var todoArray = [
         {
-          id: 1,
+          id: '123',
           text: 'Walk dog',
-          completed:false,
+          completed: true,
           createdAt: 1476932876,
-          completedAt: undefined
+          completedAt: 1476932888
         }
       ];
 
+      var updates = {
+        completed: false,
+        completedAt: null
+      };
       var action = {
-        type: 'TOGGLE_TODO',
-        id: 1
+        type: 'UPDATE_TODO',
+        id: todoArray[0].id,
+        updates
       };
 
       var res = reducers.todosReducer(df(todoArray), df(action));
 
-      expect(res[0].completed).toEqual(true);
-      expect(res[0].completedAt).toBeA('number');
+      expect(res[0].completed).toEqual(updates.completed);
+      expect(res[0].completedAt).toEqual(updates.completedAt);
+      expect(res[0].text).toEqual(todoArray[0].text);
     });
 
     it ('should add existing todos', () => {
